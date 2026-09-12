@@ -104,8 +104,40 @@ async function run() {
 	} );
 	check( 'Нет пустых граммовок', 0 === emptyWeights, emptyWeights + ' пустых' );
 
-	// 5. Переход по категории и scroll-spy.
-	await page.locator( '.chip', { hasText: 'Десерты' } ).click();
+	// 5. Блок разделов на первом экране: все названия видны сразу, ленты ещё нет.
+	const indexNav = await page.evaluate( () => {
+		const idx = document.querySelector( '.menu-index' );
+		if ( ! idx ) {
+			return null;
+		}
+		const chips = Array.prototype.slice.call( idx.querySelectorAll( '.chip' ) );
+		const visible = chips.filter( ( c ) => {
+			const r = c.getBoundingClientRect();
+			return r.left >= -1 && r.right <= window.innerWidth + 1 && r.bottom <= window.innerHeight + 1;
+		} );
+		return {
+			total: chips.length,
+			visible: visible.length,
+			stripHidden: ! document.querySelector( '.navbar' ).classList.contains( 'is-visible' )
+		};
+	} );
+	check(
+		'На первом экране видны все разделы без прокрутки',
+		!! indexNav && indexNav.total === indexNav.visible && indexNav.stripHidden,
+		indexNav ? 'видно ' + indexNav.visible + ' из ' + indexNav.total + ', лента спрятана: ' + indexNav.stripHidden : 'блока нет'
+	);
+
+	// 6. Прилипающая лента выезжает после прокрутки.
+	await page.evaluate( () => window.scrollBy( 0, 600 ) );
+	await page.waitForTimeout( 900 );
+	const stripShown = await page.evaluate( () => {
+		const nb = document.querySelector( '.navbar' );
+		return nb.classList.contains( 'is-visible' ) && Math.round( nb.getBoundingClientRect().top ) === 0;
+	} );
+	check( 'После прокрутки лента выезжает и прилипает к верху', stripShown );
+
+	// 7. Переход по категории и scroll-spy.
+	await page.locator( '.menu-index .chip', { hasText: 'Десерты' } ).click();
 	await page.waitForTimeout( 2200 );
 	const activeChip = await page.locator( '.chip.is-active' ).first().textContent();
 	check( 'Scroll-spy подсвечивает раздел', 'Десерты' === activeChip.trim(), 'активна: ' + activeChip.trim() );

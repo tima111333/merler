@@ -11,29 +11,55 @@
 	/* ── Лента категорий и подсветка активной ──────── */
 
 	var strip = doc.querySelector( '.chips' );
+	var menuIndex = doc.querySelector( '.menu-index' );
 	var chips = Array.prototype.slice.call( doc.querySelectorAll( '.chip' ) );
 	var sections = Array.prototype.slice.call( doc.querySelectorAll( '.section' ) );
-	var chipById = {};
+	var chipsById = {};
 
+	// Одинаковые разделы есть и в блоке на первом экране, и в прилипающей ленте.
 	chips.forEach( function ( chip ) {
 		var href = chip.getAttribute( 'href' ) || '';
-		if ( '#' === href.charAt( 0 ) ) {
-			chipById[ href.slice( 1 ) ] = chip;
+		if ( '#' !== href.charAt( 0 ) ) {
+			return;
 		}
+		var id = href.slice( 1 );
+		if ( ! chipsById[ id ] ) {
+			chipsById[ id ] = [];
+		}
+		chipsById[ id ].push( chip );
 	} );
 
 	function setActive( id ) {
-		var chip = chipById[ id ];
-		if ( ! chip || ! strip ) {
+		var group = chipsById[ id ];
+		if ( ! group ) {
 			return;
 		}
 
 		chips.forEach( function ( c ) {
 			c.classList.remove( 'is-active' );
 		} );
-		chip.classList.add( 'is-active' );
 
-		var rect = chip.getBoundingClientRect();
+		group.forEach( function ( c ) {
+			c.classList.add( 'is-active' );
+		} );
+
+		if ( ! strip ) {
+			return;
+		}
+
+		// Подводим кнопку в ленте в видимую часть.
+		var inStrip = null;
+		group.forEach( function ( c ) {
+			if ( strip.contains( c ) ) {
+				inStrip = c;
+			}
+		} );
+
+		if ( ! inStrip ) {
+			return;
+		}
+
+		var rect = inStrip.getBoundingClientRect();
 		var stripRect = strip.getBoundingClientRect();
 
 		if ( rect.left < stripRect.left + 12 || rect.right > stripRect.right - 12 ) {
@@ -160,7 +186,40 @@
 		} );
 	}
 
-	// Гость начал читать меню — панель уходит и освобождает экран.
+	/**
+	 * Показывать ленту только после того, как блок разделов уехал вверх.
+	 *
+	 * @param {boolean} force Показать принудительно (например, для поиска).
+	 */
+	function updateNavbar( force ) {
+		if ( ! navbar ) {
+			return;
+		}
+
+		if ( force ) {
+			navbar.classList.add( 'is-visible' );
+			return;
+		}
+
+		var show = true;
+
+		if ( menuIndex ) {
+			show = menuIndex.getBoundingClientRect().bottom <= 8;
+		}
+
+		// Открытый поиск не прячем вместе с лентой.
+		if ( ! show && searchBar && searchBar.classList.contains( 'is-open' ) ) {
+			show = true;
+		}
+
+		navbar.classList.toggle( 'is-visible', show );
+
+		if ( ! show ) {
+			collapseChips();
+		}
+	}
+
+	// Гость начал читать меню — панель разделов уходит и освобождает экран.
 	var lastScrollY = window.scrollY;
 
 	window.addEventListener( 'scroll', function () {
@@ -172,7 +231,14 @@
 		}
 
 		lastScrollY = window.scrollY;
+		updateNavbar( false );
 	}, { passive: true } );
+
+	window.addEventListener( 'resize', function () {
+		updateNavbar( false );
+	}, { passive: true } );
+
+	updateNavbar( false );
 
 	// Клик мимо панели и Esc тоже закрывают её.
 	doc.addEventListener( 'click', function ( e ) {
@@ -252,10 +318,13 @@
 			searchToggle.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
 
 			if ( open ) {
+				collapseChips();
+				updateNavbar( true );
 				searchInput.focus();
 			} else {
 				searchInput.value = '';
 				filter( '' );
+				updateNavbar( false );
 			}
 		} );
 

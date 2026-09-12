@@ -72,13 +72,28 @@ img{max-width:100%;height:auto}
 .hero-greet{grid-column:1/2;margin:2px 0 0;color:var(--muted);font-size:14px;max-width:52ch}
 .hero .building{max-height:210px;width:auto;justify-self:end;display:block}
 
-/* ── Лента категорий ────────────────────────────── */
+/* ── Разделы на первом экране ───────────────────── */
+.menu-index{
+	display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+	padding:4px 16px 20px;
+	border-bottom:1px solid var(--line);
+	margin-bottom:4px;
+}
+
+/* ── Прилипающая лента ──────────────────────────── */
+/*
+ * Лента фиксирована и уезжает за верхний край, пока гость видит блок
+ * разделов на первом экране: так они не дублируются и страница не прыгает.
+ */
 .navbar{
-	position:sticky;top:0;z-index:30;
+	position:fixed;top:0;left:0;right:0;z-index:30;
+	transform:translateY(-101%);
+	transition:transform .22s ease;
 	background:rgba(255,249,235,.94);
 	-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
 	border-bottom:1px solid var(--line);
 }
+.navbar.is-visible{transform:none}
 .navbar-inner{position:relative;max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:8px 16px}
 .chips{
 	display:flex;gap:8px;flex:1;

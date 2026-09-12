@@ -21,6 +21,7 @@ if ( empty( $merler_menu ) ) : ?>
 	</main>
 	<?php
 else :
+	get_template_part( 'template-parts/menu-index', null, array( 'menu' => $merler_menu ) );
 	get_template_part( 'template-parts/nav-categories', null, array( 'menu' => $merler_menu ) );
 	?>
 	<main class="wrap" id="menu-content">
