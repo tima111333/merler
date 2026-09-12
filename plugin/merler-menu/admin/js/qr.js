@@ -161,7 +161,9 @@
 			+ '<text x="52.5" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" fill="' + merlerQR.accent + '">'
 			+ escapeXml( merlerQR.i18n.scan ) + '</text>'
 			+ '<g transform="translate(' + qrX + ' 58) scale(' + ( qrSize / count ) + ')">' + qrInner + '</g>'
-			+ '<text x="52.5" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="4.6" fill="#14120E">'
+			+ '<text x="52.5" y="121" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" fill="' + merlerQR.accent + '">'
+			+ escapeXml( merlerQR.urlHuman || '' ) + '</text>'
+			+ '<text x="52.5" y="131" text-anchor="middle" font-family="Arial, sans-serif" font-size="4.6" fill="#14120E">'
 			+ escapeXml( merlerQR.phone ) + '</text>'
 			+ wifi
 			+ '</svg>';

@@ -39,6 +39,7 @@ class Merler_QR {
 			'merlerQR',
 			array(
 				'url'      => merler_menu_url(),
+				'urlHuman' => self::human_url(),
 				'logo'     => $logo_id ? wp_get_attachment_image_url( $logo_id, 'medium' ) : MERLER_URL . 'assets/logo-mark.png',
 				'phone'    => merler_option( 'phone' ),
 				'wifiName' => merler_option( 'wifi_name' ),
@@ -54,6 +55,27 @@ class Merler_QR {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Адрес меню как его прочитает человек: без протокола и завершающей косой черты.
+	 *
+	 * Подписывается под кодом на табличке: гость видит, куда ведёт код, и подменённая
+	 * наклейка сразу заметна.
+	 *
+	 * @return string
+	 */
+	private static function human_url() {
+		$url = merler_option( 'menu_url', '' );
+
+		if ( '' === $url ) {
+			$url = home_url( '/' );
+		}
+
+		$url = preg_replace( '~^https?://~i', '', $url );
+		$url = preg_replace( '~^www\.~i', '', $url );
+
+		return rtrim( $url, '/' );
 	}
 
 	/**
