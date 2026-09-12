@@ -1,0 +1,16 @@
+/*
+Theme Name: Мерлер
+Theme URI: https://xn--e1aarcvc.xn--p1ai/
+Author: Мерлер
+Description: Лёгкая тема для сайта-меню ресторана бутик-отеля «Мерлер». Только внешний вид: данные меню живут в плагине «Меню Мерлер».
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.1
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: merler-theme
+Tags: restaurant, menu, mobile-first, one-page
+*/
+
+/* Стили меню лежат в assets/css/menu.css — этот файл нужен WordPress для описания темы. */

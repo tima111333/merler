@@ -1,0 +1,80 @@
+/* Админка меню «Мерлер» */
+
+.merler-fields .merler-field { margin: 0 0 18px; }
+.merler-fields .description { display: block; color: #646970; margin-top: 4px; }
+.merler-price-input { width: 120px; font-size: 16px; font-weight: 600; }
+
+.merler-radio,
+.merler-checks { margin: 6px 0 0; }
+.merler-radio li,
+.merler-checks li { margin: 0 0 4px; }
+.merler-checks { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.merler-radio .description { display: inline; margin-left: 4px; }
+
+/* Список блюд */
+.merler-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; display: block; }
+.merler-thumb-empty { background: #f3ece0 url( '../../assets/logo-mark.png' ) center / 32px no-repeat; opacity: .5; }
+.merler-warn { color: #b32d2e; }
+
+.merler-status { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; background: #e7f4e9; color: #1f6b34; }
+.merler-status-soon { background: #fdf3d8; color: #8a6116; }
+.merler-status-out_of_stock { background: #fbe6e6; color: #a02c2c; }
+.merler-status-hidden { background: #eceff1; color: #5b6770; }
+
+.column-merler_thumb { width: 74px; }
+.column-merler_price,
+.column-merler_weight,
+.column-merler_order { width: 90px; }
+
+.merler-quick-edit .inline-edit-group { display: block; margin: 0 0 6px; }
+.merler-quick-edit .title { display: inline-block; width: 80px; }
+
+/* Порядок блюд */
+.merler-order-page .merler-sections,
+.merler-order-page .merler-subsections,
+.merler-order-page .merler-dishes { margin: 0; padding: 0; list-style: none; }
+
+.merler-order-page .merler-section {
+	background: #fff; border: 1px solid #dcdcde; border-radius: 8px;
+	margin: 0 0 12px; padding: 10px 12px;
+}
+.merler-order-page .merler-subsection { margin: 8px 0 0; background: #fbfbfc; }
+.merler-order-page .merler-subsections { margin-top: 10px; }
+.merler-order-page .merler-section-head { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.merler-order-page .merler-hidden-mark { color: #8a6116; font-size: 12px; }
+
+.merler-order-page .merler-dishes { margin: 8px 0 0; }
+.merler-order-page .merler-dish {
+	display: flex; align-items: center; gap: 10px;
+	padding: 7px 10px; border: 1px solid #ebebeb; border-radius: 6px; background: #fff; margin: 0 0 5px;
+}
+.merler-order-page .merler-dish-price { margin-left: auto; color: #50575e; }
+.merler-order-page .merler-empty { color: #787c82; margin: 8px 0 0; font-style: italic; }
+.merler-handle { cursor: grab; color: #a7aaad; font-size: 16px; line-height: 1; user-select: none; }
+.merler-ghost { opacity: .45; }
+
+.merler-order-status {
+	position: sticky; top: 40px; z-index: 5;
+	display: inline-block; padding: 0 12px; border-radius: 999px;
+	background: #e7f4e9; color: #1f6b34; opacity: 0; transition: opacity .2s; height: 0; overflow: hidden;
+}
+.merler-order-status.is-visible { opacity: 1; height: auto; padding: 6px 12px; margin: 0 0 10px; }
+.merler-order-status.is-error { background: #fbe6e6; color: #a02c2c; }
+
+/* Настройки */
+.merler-settings .merler-image-preview img { max-width: 220px; height: auto; display: block; margin: 0 0 8px; border: 1px solid #dcdcde; border-radius: 6px; background: #fff; }
+.merler-settings h2.title { margin-top: 28px; }
+
+/* QR */
+.merler-qr-grid { display: flex; flex-wrap: wrap; gap: 24px; margin: 16px 0 24px; }
+.merler-qr-box { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 16px; max-width: 320px; }
+.merler-qr-box h2 { margin-top: 0; font-size: 15px; }
+.merler-qr-canvas svg { width: 220px; height: 220px; display: block; }
+.merler-tent-preview { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 14px; display: inline-block; }
+.merler-tent-preview svg { width: 210px; height: auto; display: block; }
+
+/* Инструкция */
+.merler-help h2 { margin-top: 26px; }
+.merler-help ol { max-width: 760px; }
+.merler-steps { margin: 0; padding-left: 20px; }
+.merler-steps li { margin-bottom: 6px; }
