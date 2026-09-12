@@ -192,3 +192,24 @@ function merler_transliterate( $text ) {
 
 	return sanitize_title( $text );
 }
+
+/**
+ * Ссылка на соцсеть из настройки: клиент может вписать и имя аккаунта, и целый адрес.
+ *
+ * @param string $value Значение настройки.
+ * @param string $base  Базовый адрес, например «https://t.me/».
+ * @return string Готовая ссылка или пустая строка.
+ */
+function merler_social_url( $value, $base ) {
+	$value = trim( (string) $value );
+
+	if ( '' === $value ) {
+		return '';
+	}
+
+	if ( preg_match( '~^https?://~i', $value ) ) {
+		return esc_url_raw( $value );
+	}
+
+	return esc_url_raw( $base . ltrim( $value, '@/' ) );
+}

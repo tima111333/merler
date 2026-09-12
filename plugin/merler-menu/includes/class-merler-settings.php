@@ -46,6 +46,8 @@ class Merler_Settings {
 			'phone'         => '+7 988 641-32-34',
 			'whatsapp'      => '+7 988 641-32-34',
 			'instagram'     => 'merler.hotel',
+			'telegram'      => '',
+			'vk'            => '',
 			'address'       => '',
 			'map_url'       => '',
 			'hours'         => __( 'Кухня работает с 8:00 до 23:00', 'merler-menu' ),
@@ -124,7 +126,7 @@ class Merler_Settings {
 		$input    = is_array( $input ) ? $input : array();
 		$defaults = self::defaults();
 
-		$text_fields = array( 'hero_title', 'about_title', 'phone', 'whatsapp', 'instagram', 'address', 'hours', 'wifi_name', 'wifi_pass', 'currency' );
+		$text_fields = array( 'hero_title', 'about_title', 'phone', 'whatsapp', 'instagram', 'telegram', 'vk', 'address', 'hours', 'wifi_name', 'wifi_pass', 'currency' );
 		foreach ( $text_fields as $field ) {
 			if ( isset( $input[ $field ] ) ) {
 				$out[ $field ] = sanitize_text_field( wp_unslash( $input[ $field ] ) );
@@ -221,7 +223,9 @@ class Merler_Settings {
 					<?php
 					self::text_row( 'phone', __( 'Телефон', 'merler-menu' ), $s['phone'], __( 'В любом виде: +7 988 641-32-34.', 'merler-menu' ) );
 					self::text_row( 'whatsapp', __( 'WhatsApp', 'merler-menu' ), $s['whatsapp'], __( 'Номер для ссылки wa.me. Пусто — кнопка не выводится.', 'merler-menu' ) );
-					self::text_row( 'instagram', __( 'Instagram', 'merler-menu' ), $s['instagram'], __( 'Только имя аккаунта, без «@» и ссылки.', 'merler-menu' ) );
+					self::text_row( 'instagram', __( 'Instagram', 'merler-menu' ), $s['instagram'], __( 'Имя аккаунта без «@» или целая ссылка. Пусто — кнопка не выводится.', 'merler-menu' ) );
+					self::text_row( 'telegram', __( 'Telegram', 'merler-menu' ), $s['telegram'], __( 'Имя канала без «@» или целая ссылка.', 'merler-menu' ) );
+					self::text_row( 'vk', __( 'ВКонтакте', 'merler-menu' ), $s['vk'], __( 'Короткое имя страницы или целая ссылка.', 'merler-menu' ) );
 					self::text_row( 'address', __( 'Адрес', 'merler-menu' ), $s['address'] );
 					self::text_row( 'map_url', __( 'Ссылка на карты', 'merler-menu' ), $s['map_url'], __( 'Яндекс Карты или 2ГИС — ссылка на карточку заведения.', 'merler-menu' ) );
 					self::text_row( 'hours', __( 'Часы работы кухни', 'merler-menu' ), $s['hours'] );

@@ -10,6 +10,8 @@ defined( 'ABSPATH' ) || exit;
 $merler_phone     = merler_theme_option( 'phone' );
 $merler_whatsapp  = merler_theme_option( 'whatsapp' );
 $merler_instagram = merler_theme_option( 'instagram' );
+$merler_telegram  = merler_theme_option( 'telegram' );
+$merler_vk        = merler_theme_option( 'vk' );
 $merler_address   = merler_theme_option( 'address' );
 $merler_map       = merler_theme_option( 'map_url' );
 $merler_hours     = merler_theme_option( 'hours' );
@@ -62,9 +64,22 @@ $merler_wa_link    = function_exists( 'merler_phone_digits' ) ? merler_phone_dig
 				<a href="https://wa.me/<?php echo esc_attr( $merler_wa_link ); ?>" target="_blank" rel="noopener">WhatsApp</a>
 			<?php endif; ?>
 
-			<?php if ( $merler_instagram ) : ?>
-				<a href="https://instagram.com/<?php echo esc_attr( ltrim( $merler_instagram, '@' ) ); ?>" target="_blank" rel="noopener">Instagram</a>
-			<?php endif; ?>
+			<?php
+			$merler_socials = array(
+				'Instagram' => function_exists( 'merler_social_url' ) ? merler_social_url( $merler_instagram, 'https://instagram.com/' ) : '',
+				'Telegram'  => function_exists( 'merler_social_url' ) ? merler_social_url( $merler_telegram, 'https://t.me/' ) : '',
+				'ВКонтакте' => function_exists( 'merler_social_url' ) ? merler_social_url( $merler_vk, 'https://vk.com/' ) : '',
+			);
+
+			foreach ( $merler_socials as $merler_label => $merler_link ) :
+				if ( ! $merler_link ) {
+					continue;
+				}
+				?>
+				<a href="<?php echo esc_url( $merler_link ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $merler_label ); ?></a>
+				<?php
+			endforeach;
+			?>
 
 			<?php if ( $merler_map ) : ?>
 				<a href="<?php echo esc_url( $merler_map ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'На карте', 'merler-theme' ); ?></a>
