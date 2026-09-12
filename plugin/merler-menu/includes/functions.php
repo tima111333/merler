@@ -166,3 +166,29 @@ function merler_menu_url() {
 function merler_user_can_manage() {
 	return current_user_can( 'edit_merler_dishes' ) || current_user_can( 'manage_options' );
 }
+
+/**
+ * Транслитерация названия в латинский адрес записи.
+ *
+ * WordPress из русского названия делает адрес вида «%d0%ba%d0%b0...». Гость его
+ * не видит, но адрес — ключ импорта и экспорта меню, поэтому он должен быть читаемым.
+ *
+ * @param string $text Название.
+ * @return string
+ */
+function merler_transliterate( $text ) {
+	$map = array(
+		'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd', 'е' => 'e', 'ё' => 'e',
+		'ж' => 'zh', 'з' => 'z', 'и' => 'i', 'й' => 'y', 'к' => 'k', 'л' => 'l', 'м' => 'm',
+		'н' => 'n', 'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't', 'у' => 'u',
+		'ф' => 'f', 'х' => 'h', 'ц' => 'c', 'ч' => 'ch', 'ш' => 'sh', 'щ' => 'shch',
+		'ъ' => '', 'ы' => 'y', 'ь' => '', 'э' => 'e', 'ю' => 'yu', 'я' => 'ya',
+		'ә' => 'a', 'ғ' => 'g', 'қ' => 'k', 'ң' => 'n', 'ө' => 'o', 'ұ' => 'u', 'ү' => 'u',
+		'һ' => 'h', 'і' => 'i',
+	);
+
+	$text = mb_strtolower( (string) $text );
+	$text = strtr( $text, $map );
+
+	return sanitize_title( $text );
+}

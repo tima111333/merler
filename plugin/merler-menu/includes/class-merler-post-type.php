@@ -19,6 +19,7 @@ class Merler_Post_Type {
 		add_action( 'init', array( __CLASS__, 'register' ) );
 		add_filter( 'use_block_editor_for_post_type', array( __CLASS__, 'disable_gutenberg' ), 10, 2 );
 		add_filter( 'enter_title_here', array( __CLASS__, 'title_placeholder' ), 10, 2 );
+		add_filter( 'wp_insert_post_data', array( __CLASS__, 'latin_slug' ), 10, 2 );
 	}
 
 	/**
@@ -106,6 +107,53 @@ class Merler_Post_Type {
 			return false;
 		}
 		return $use;
+	}
+
+	/**
+	 * Латинский адрес записи вместо процентных кодов из русского названия.
+	 *
+	 * @param array $data    Данные записи.
+	 * @param array $postarr Исходный массив.
+	 * @return array
+	 */
+	public static function latin_slug( $data, $postarr ) {
+		if ( empty( $data['post_type'] ) || 'merler_dish' !== $data['post_type'] ) {
+			return $data;
+		}
+
+		// Авточерновик WordPress называет «Черновик» («Auto Draft») — из него адрес брать нельзя.
+		$status = isset( $data['post_status'] ) ? (string) $data['post_status'] : '';
+		if ( 'auto-draft' === $status ) {
+			return $data;
+		}
+
+		$name  = isset( $data['post_name'] ) ? (string) $data['post_name'] : '';
+		$title = isset( $data['post_title'] ) ? (string) $data['post_title'] : '';
+
+		if ( __( 'Auto Draft' ) === $title ) {
+			return $data;
+		}
+
+		// Трогаем только пустые и процентно-закодированные адреса: готовые не ломаем.
+		$needs_slug = ( '' === $name ) || preg_match( '/%[0-9a-f]{2}/i', $name );
+
+		if ( ! $needs_slug || '' === $title ) {
+			return $data;
+		}
+
+		$slug = merler_transliterate( $title );
+
+		if ( '' !== $slug ) {
+			$data['post_name'] = wp_unique_post_slug(
+				$slug,
+				isset( $postarr['ID'] ) ? (int) $postarr['ID'] : 0,
+				isset( $data['post_status'] ) ? $data['post_status'] : 'publish',
+				'merler_dish',
+				0
+			);
+		}
+
+		return $data;
 	}
 
 	/**

@@ -3,7 +3,7 @@
   "restaurant": "Ресторан бутик-отеля «Мерлер»",
   "source": "Печатное меню (меню.jpg, мерлер.jpg)",
   "currency": "₽",
-  "note": "Названия и составы сохранены точно как в печатном меню, включая опечатки. Правки вносятся в админке WordPress.",
+  "note": "Названия и составы сохранены как в печатном меню. Исправления, подтверждённые клиентом 12.09.2026: «Брошем» → «Брошет», лимон в составе ухи. Порядок разделов — по правке клиента.",
   "sections": [
     {
       "name": "Холодные закуски",
@@ -136,7 +136,9 @@
           "weight": "315 г",
           "price": 1700,
           "description": "Креветки тигровые, фирменный соус",
-          "badges": ["chef"],
+          "badges": [
+            "chef"
+          ],
           "status": "in_stock",
           "order": 30
         },
@@ -166,7 +168,9 @@
           "weight": "300 г",
           "price": 850,
           "description": "Баклажаны, страчателла, микс салата",
-          "badges": ["chef"],
+          "badges": [
+            "chef"
+          ],
           "status": "in_stock",
           "order": 60
         }
@@ -235,7 +239,9 @@
           "weight": "210 г",
           "price": 800,
           "description": "Тунец консервированный, микс салата, Авокадо, масло оливковое, лимонный сок, кукуруза",
-          "badges": ["chef"],
+          "badges": [
+            "chef"
+          ],
           "status": "in_stock",
           "order": 60
         },
@@ -353,7 +359,7 @@
           "title": "Уха из семги",
           "weight": "450 г",
           "price": 800,
-          "description": "Семга, картофель, морковь, лук репчатый, зелень",
+          "description": "Семга, картофель, морковь, лук репчатый, зелень, лимон",
           "badges": [],
           "status": "in_stock",
           "order": 40
@@ -440,15 +446,158 @@
       ]
     },
     {
-      "name": "Блюда из курицы",
-      "slug": "blyuda-iz-kuricy",
+      "name": "Блюда из мяса",
+      "slug": "blyuda-iz-myasa",
       "order": 70,
       "description": "",
       "subsections": [],
       "dishes": [
         {
+          "slug": "steyk-tomagavk",
+          "title": "Стейк Томагавк",
+          "weight": "500 г",
+          "price": 1850,
+          "description": "Корейка теленка реберная, помидор, шампиньон, соус перечный",
+          "badges": [],
+          "status": "in_stock",
+          "order": 10
+        },
+        {
+          "slug": "steyk-ribay",
+          "title": "Стейк Рибай",
+          "weight": "430 г",
+          "price": 2000,
+          "description": "Премиальный отруб говядины, помидор, шампиньон, соус перечный",
+          "badges": [],
+          "status": "in_stock",
+          "order": 20
+        },
+        {
+          "slug": "file-minon-ot-shefa",
+          "title": "Филе Миньон от Шефа",
+          "weight": "330 г",
+          "price": 2500,
+          "description": "Вырезка телятины, креветки тигровые, картофель запеченный, соус перечный",
+          "badges": [
+            "chef"
+          ],
+          "status": "in_stock",
+          "order": 30
+        },
+        {
+          "slug": "tomlennoe-file-yagnenka",
+          "title": "Томленное Филе ягненка",
+          "weight": "415 г",
+          "price": 950,
+          "description": "Каре ягненка без кости, кус-кус, нухут, курдюк, соус Демиглас",
+          "badges": [],
+          "status": "in_stock",
+          "order": 40
+        },
+        {
+          "slug": "kordon-blyu",
+          "title": "Кордон блю",
+          "weight": "340 г",
+          "price": 1200,
+          "description": "Корейка телятины, куриное филе, сыр моцарелла, соус Браун Мустард",
+          "badges": [],
+          "status": "in_stock",
+          "order": 50
+        },
+        {
+          "slug": "myasnoy-broshem",
+          "title": "Мясной Брошет",
+          "weight": "250 г",
+          "price": 1350,
+          "description": "Корейка телятина, красный лук, перец болгарский, микс салат, крем бальзамический",
+          "badges": [],
+          "status": "in_stock",
+          "order": 60
+        },
+        {
+          "slug": "tomlennaya-govyadina",
+          "title": "Томленная говядина",
+          "weight": "405 г",
+          "price": 800,
+          "description": "Мясо говядина, картофельное пюре, соус Демиглас",
+          "badges": [],
+          "status": "in_stock",
+          "order": 70
+        },
+        {
+          "slug": "telyatina-s-ovoshchami",
+          "title": "Телятина с овощами",
+          "weight": "430 г",
+          "price": 1200,
+          "description": "Корейка телятины, картофель молодой, кабачок, помидор, перец болгарский",
+          "badges": [],
+          "status": "in_stock",
+          "order": 80
+        },
+        {
+          "slug": "baranya-golova",
+          "title": "Баранья голова",
+          "weight": "",
+          "price": 2600,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 90
+        },
+        {
+          "slug": "kare-yagnenka-ot-shefa",
+          "title": "Каре ягненка от шефа",
+          "weight": "350 г",
+          "price": 1450,
+          "description": "",
+          "badges": [
+            "chef"
+          ],
+          "status": "in_stock",
+          "order": 100
+        },
+        {
+          "slug": "basmishkat",
+          "title": "Басмишкат",
+          "weight": "400 г",
+          "price": 900,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 110
+        },
+        {
+          "slug": "lyulya-s-syrom",
+          "title": "Люля с сыром",
+          "weight": "300 г",
+          "price": 900,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 120
+        },
+        {
+          "slug": "lyulya-baranii",
+          "title": "Люля Бараньи",
+          "weight": "250 г",
+          "price": 900,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 130
+        }
+      ]
+    },
+    {
+      "name": "Блюда из курицы",
+      "slug": "blyuda-iz-kuricy",
+      "order": 80,
+      "description": "",
+      "subsections": [],
+      "dishes": [
+        {
           "slug": "kurinyy-broshem",
-          "title": "Куриный Брошем",
+          "title": "Куриный Брошет",
           "weight": "250 г",
           "price": 850,
           "description": "Филе куриное, красный лук, перец болгарский, микс салат, крем бальзамический",
@@ -501,7 +650,7 @@
     {
       "name": "Саджи",
       "slug": "sadzhi",
-      "order": 80,
+      "order": 90,
       "description": "",
       "subsections": [],
       "dishes": [
@@ -538,148 +687,295 @@
       ]
     },
     {
-      "name": "Блюда из мяса",
-      "slug": "blyuda-iz-myasa",
-      "order": 90,
+      "name": "Паста",
+      "slug": "pasta",
+      "order": 100,
       "description": "",
       "subsections": [],
       "dishes": [
         {
-          "slug": "steyk-tomagavk",
-          "title": "Стейк Томагавк",
-          "weight": "500 г",
-          "price": 1850,
-          "description": "Корейка теленка реберная, помидор, шампиньон, соус перечный",
+          "slug": "fetuchini-alfredo",
+          "title": "Фетучини Альфредо",
+          "weight": "330 г",
+          "price": 790,
+          "description": "Паста фетучини, филе куриное, шампиньон, сливки, сыр пармезан",
           "badges": [],
           "status": "in_stock",
           "order": 10
         },
         {
-          "slug": "steyk-ribay",
-          "title": "Стейк Рибай",
-          "weight": "430 г",
-          "price": 2000,
-          "description": "Премиальный отруб говядины, помидор, шампиньон, соус перечный",
+          "slug": "fresh-pesto-s-krevetkami",
+          "title": "Фреш Песто с креветками",
+          "weight": "350 г",
+          "price": 900,
+          "description": "Паста фетучини, креветки тигровые, соус песто, сыр пармезан",
           "badges": [],
           "status": "in_stock",
           "order": 20
         },
         {
-          "slug": "file-minon-ot-shefa",
-          "title": "Филе Миньон от Шефа",
-          "weight": "330 г",
-          "price": 2500,
-          "description": "Вырезка телятины, креветки тигровые, картофель запеченный, соус перечный",
-          "badges": ["chef"],
+          "slug": "rizotto-s-govyadinoy",
+          "title": "Ризотто с говядиной",
+          "weight": "350 г",
+          "price": 800,
+          "description": "Паста орзо, мякоть говядины, сыр пармезан, шампиньон, соус Демиглас",
+          "badges": [],
           "status": "in_stock",
           "order": 30
         },
         {
-          "slug": "tomlennoe-file-yagnenka",
-          "title": "Томленное Филе ягненка",
-          "weight": "415 г",
+          "slug": "funchoza-s-kuricey",
+          "title": "Фунчоза с курицей",
+          "weight": "250 г",
+          "price": 750,
+          "description": "Филе куриное, перец болгарский, кабачок, фунчоза, соус Кимчи",
+          "badges": [],
+          "status": "in_stock",
+          "order": 40
+        }
+      ]
+    },
+    {
+      "name": "Пицца",
+      "slug": "picca",
+      "order": 110,
+      "description": "",
+      "dishes": [
+        {
+          "slug": "picca-celnozernovaya-s-kuricey-i-ovoshchami",
+          "title": "Цельнозерновая с курицей и овощами",
+          "weight": "",
+          "price": 900,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 10
+        },
+        {
+          "slug": "picca-myasnaya",
+          "title": "Мясная",
+          "weight": "",
+          "price": 850,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 20
+        },
+        {
+          "slug": "picca-assorti",
+          "title": "Ассорти",
+          "weight": "",
           "price": 950,
-          "description": "Каре ягненка без кости, кус-кус, нухут, курдюк, соус Демиглас",
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 30
+        },
+        {
+          "slug": "picca-kurinaya-s-gribami",
+          "title": "Куриная с грибами",
+          "weight": "",
+          "price": 800,
+          "description": "",
           "badges": [],
           "status": "in_stock",
           "order": 40
         },
         {
-          "slug": "kordon-blyu",
-          "title": "Кордон блю",
-          "weight": "340 г",
-          "price": 1200,
-          "description": "Корейка телятины, куриное филе, сыр моцарелла, соус Браун Мустард",
+          "slug": "picca-chetyre-syra",
+          "title": "Четыре сыра",
+          "weight": "",
+          "price": 750,
+          "description": "",
           "badges": [],
           "status": "in_stock",
           "order": 50
         },
         {
-          "slug": "myasnoy-broshem",
-          "title": "Мясной Брошем",
-          "weight": "250 г",
-          "price": 1350,
-          "description": "Корейка телятина, красный лук, перец болгарский, микс салат, крем бальзамический",
+          "slug": "picca-margarita",
+          "title": "Маргарита",
+          "weight": "",
+          "price": 700,
+          "description": "",
           "badges": [],
           "status": "in_stock",
           "order": 60
         },
         {
-          "slug": "tomlennaya-govyadina",
-          "title": "Томленная говядина",
-          "weight": "405 г",
-          "price": 800,
-          "description": "Мясо говядина, картофельное пюре, соус Демиглас",
+          "slug": "picca-pepperoni",
+          "title": "Пепперони",
+          "weight": "",
+          "price": 780,
+          "description": "",
           "badges": [],
           "status": "in_stock",
           "order": 70
         },
         {
-          "slug": "telyatina-s-ovoshchami",
-          "title": "Телятина с овощами",
-          "weight": "430 г",
-          "price": 1200,
-          "description": "Корейка телятины, картофель молодой, кабачок, помидор, перец болгарский",
+          "slug": "picca-siciliyskaya",
+          "title": "Сицилийская",
+          "weight": "",
+          "price": 850,
+          "description": "",
           "badges": [],
           "status": "in_stock",
           "order": 80
         },
         {
-          "slug": "baranya-golova",
-          "title": "Баранья голова",
+          "slug": "picca-cezar",
+          "title": "Цезарь",
           "weight": "",
-          "price": 2600,
+          "price": 850,
           "description": "",
           "badges": [],
           "status": "in_stock",
           "order": 90
-        },
+        }
+      ],
+      "subsections": [
         {
-          "slug": "kare-yagnenka-ot-shefa",
-          "title": "Каре ягненка от шефа",
-          "weight": "350 г",
-          "price": 1450,
+          "name": "Хлеб и фокача",
+          "slug": "hleb-i-fokacha",
+          "order": 10,
           "description": "",
-          "badges": ["chef"],
-          "status": "in_stock",
-          "order": 100
-        },
+          "dishes": [
+            {
+              "slug": "korzina-hleba",
+              "title": "Корзина хлеба",
+              "weight": "",
+              "price": 180,
+              "description": "",
+              "badges": [],
+              "status": "in_stock",
+              "order": 10
+            },
+            {
+              "slug": "fokacha-s-syrom",
+              "title": "Фокача с сыром",
+              "weight": "",
+              "price": 180,
+              "description": "",
+              "badges": [],
+              "status": "in_stock",
+              "order": 20
+            },
+            {
+              "slug": "fokacha-s-tomatom",
+              "title": "Фокача с томатом",
+              "weight": "",
+              "price": 180,
+              "description": "",
+              "badges": [],
+              "status": "in_stock",
+              "order": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Гарниры",
+      "slug": "garniry",
+      "order": 120,
+      "description": "",
+      "subsections": [],
+      "dishes": [
         {
-          "slug": "basmishkat",
-          "title": "Басмишкат",
-          "weight": "400 г",
-          "price": 900,
+          "slug": "kartofel-po-derevenski",
+          "title": "Картофель по-деревенски",
+          "weight": "150 г",
+          "price": 250,
           "description": "",
           "badges": [],
           "status": "in_stock",
-          "order": 110
+          "order": 10
         },
         {
-          "slug": "lyulya-s-syrom",
-          "title": "Люля с сыром",
-          "weight": "300 г",
-          "price": 900,
+          "slug": "kartofel-fri",
+          "title": "Картофель фри",
+          "weight": "150 г",
+          "price": 250,
           "description": "",
           "badges": [],
           "status": "in_stock",
-          "order": 120
+          "order": 20
         },
         {
-          "slug": "lyulya-baranii",
-          "title": "Люля Бараньи",
-          "weight": "250 г",
-          "price": 900,
+          "slug": "molodoy-kartofel-zapech",
+          "title": "Молодой картофель запеч.",
+          "weight": "150 г",
+          "price": 250,
           "description": "",
           "badges": [],
           "status": "in_stock",
-          "order": 130
+          "order": 30
+        },
+        {
+          "slug": "smes-risa",
+          "title": "Смесь риса",
+          "weight": "150 г",
+          "price": 450,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 40
+        },
+        {
+          "slug": "ris-belyy",
+          "title": "Рис белый",
+          "weight": "150 г",
+          "price": 150,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 50
+        },
+        {
+          "slug": "pyure",
+          "title": "Пюре",
+          "weight": "200 г",
+          "price": 150,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 60
+        },
+        {
+          "slug": "ovoshchi-gril",
+          "title": "Овощи гриль",
+          "weight": "150 г",
+          "price": 450,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 70
+        },
+        {
+          "slug": "grenki-chesnochnye",
+          "title": "Гренки чесночные",
+          "weight": "200 г",
+          "price": 300,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 80
+        },
+        {
+          "slug": "ohotnichi-kolbaski",
+          "title": "Охотничьи колбаски",
+          "weight": "150 г",
+          "price": 350,
+          "description": "",
+          "badges": [],
+          "status": "in_stock",
+          "order": 90
         }
       ]
     },
     {
       "name": "Дагестанская кухня",
       "slug": "dagestanskaya-kuhnya",
-      "order": 100,
+      "order": 130,
       "description": "",
       "dishes": [],
       "subsections": [
@@ -952,292 +1248,6 @@
               "order": 20
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Паста",
-      "slug": "pasta",
-      "order": 110,
-      "description": "",
-      "subsections": [],
-      "dishes": [
-        {
-          "slug": "fetuchini-alfredo",
-          "title": "Фетучини Альфредо",
-          "weight": "330 г",
-          "price": 790,
-          "description": "Паста фетучини, филе куриное, шампиньон, сливки, сыр пармезан",
-          "badges": [],
-          "status": "in_stock",
-          "order": 10
-        },
-        {
-          "slug": "fresh-pesto-s-krevetkami",
-          "title": "Фреш Песто с креветками",
-          "weight": "350 г",
-          "price": 900,
-          "description": "Паста фетучини, креветки тигровые, соус песто, сыр пармезан",
-          "badges": [],
-          "status": "in_stock",
-          "order": 20
-        },
-        {
-          "slug": "rizotto-s-govyadinoy",
-          "title": "Ризотто с говядиной",
-          "weight": "350 г",
-          "price": 800,
-          "description": "Паста орзо, мякоть говядины, сыр пармезан, шампиньон, соус Демиглас",
-          "badges": [],
-          "status": "in_stock",
-          "order": 30
-        },
-        {
-          "slug": "funchoza-s-kuricey",
-          "title": "Фунчоза с курицей",
-          "weight": "250 г",
-          "price": 750,
-          "description": "Филе куриное, перец болгарский, кабачок, фунчоза, соус Кимчи",
-          "badges": [],
-          "status": "in_stock",
-          "order": 40
-        }
-      ]
-    },
-    {
-      "name": "Пицца",
-      "slug": "picca",
-      "order": 120,
-      "description": "",
-      "dishes": [
-        {
-          "slug": "picca-celnozernovaya-s-kuricey-i-ovoshchami",
-          "title": "Цельнозерновая с курицей и овощами",
-          "weight": "",
-          "price": 900,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 10
-        },
-        {
-          "slug": "picca-myasnaya",
-          "title": "Мясная",
-          "weight": "",
-          "price": 850,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 20
-        },
-        {
-          "slug": "picca-assorti",
-          "title": "Ассорти",
-          "weight": "",
-          "price": 950,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 30
-        },
-        {
-          "slug": "picca-kurinaya-s-gribami",
-          "title": "Куриная с грибами",
-          "weight": "",
-          "price": 800,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 40
-        },
-        {
-          "slug": "picca-chetyre-syra",
-          "title": "Четыре сыра",
-          "weight": "",
-          "price": 750,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 50
-        },
-        {
-          "slug": "picca-margarita",
-          "title": "Маргарита",
-          "weight": "",
-          "price": 700,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 60
-        },
-        {
-          "slug": "picca-pepperoni",
-          "title": "Пепперони",
-          "weight": "",
-          "price": 780,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 70
-        },
-        {
-          "slug": "picca-siciliyskaya",
-          "title": "Сицилийская",
-          "weight": "",
-          "price": 850,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 80
-        },
-        {
-          "slug": "picca-cezar",
-          "title": "Цезарь",
-          "weight": "",
-          "price": 850,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 90
-        }
-      ],
-      "subsections": [
-        {
-          "name": "Хлеб и фокача",
-          "slug": "hleb-i-fokacha",
-          "order": 10,
-          "description": "",
-          "dishes": [
-            {
-              "slug": "korzina-hleba",
-              "title": "Корзина хлеба",
-              "weight": "",
-              "price": 180,
-              "description": "",
-              "badges": [],
-              "status": "in_stock",
-              "order": 10
-            },
-            {
-              "slug": "fokacha-s-syrom",
-              "title": "Фокача с сыром",
-              "weight": "",
-              "price": 180,
-              "description": "",
-              "badges": [],
-              "status": "in_stock",
-              "order": 20
-            },
-            {
-              "slug": "fokacha-s-tomatom",
-              "title": "Фокача с томатом",
-              "weight": "",
-              "price": 180,
-              "description": "",
-              "badges": [],
-              "status": "in_stock",
-              "order": 30
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Гарниры",
-      "slug": "garniry",
-      "order": 130,
-      "description": "",
-      "subsections": [],
-      "dishes": [
-        {
-          "slug": "kartofel-po-derevenski",
-          "title": "Картофель по-деревенски",
-          "weight": "150 г",
-          "price": 250,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 10
-        },
-        {
-          "slug": "kartofel-fri",
-          "title": "Картофель фри",
-          "weight": "150 г",
-          "price": 250,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 20
-        },
-        {
-          "slug": "molodoy-kartofel-zapech",
-          "title": "Молодой картофель запеч.",
-          "weight": "150 г",
-          "price": 250,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 30
-        },
-        {
-          "slug": "smes-risa",
-          "title": "Смесь риса",
-          "weight": "150 г",
-          "price": 450,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 40
-        },
-        {
-          "slug": "ris-belyy",
-          "title": "Рис белый",
-          "weight": "150 г",
-          "price": 150,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 50
-        },
-        {
-          "slug": "pyure",
-          "title": "Пюре",
-          "weight": "200 г",
-          "price": 150,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 60
-        },
-        {
-          "slug": "ovoshchi-gril",
-          "title": "Овощи гриль",
-          "weight": "150 г",
-          "price": 450,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 70
-        },
-        {
-          "slug": "grenki-chesnochnye",
-          "title": "Гренки чесночные",
-          "weight": "200 г",
-          "price": 300,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 80
-        },
-        {
-          "slug": "ohotnichi-kolbaski",
-          "title": "Охотничьи колбаски",
-          "weight": "150 г",
-          "price": 350,
-          "description": "",
-          "badges": [],
-          "status": "in_stock",
-          "order": 90
         }
       ]
     },

@@ -1,7 +1,7 @@
 {
     "version": 1,
     "restaurant": "Мерлер",
-    "exported": "2026-09-11T23:46:29+00:00",
+    "exported": "2026-09-12T15:13:36+00:00",
     "currency": "₽",
     "sections": [
         {
@@ -740,6 +740,16 @@
                         },
                         {
                             "slug": "",
+                            "title": "Дегустационный сет из семи видов дагестанского хинкала с тремя соусами и сушёным мясом по рецепту бабушки шеф-повара (копия)",
+                            "weight": "",
+                            "price": 999,
+                            "description": "Проверка очень длинного названия и пустой граммовки.",
+                            "badges": [],
+                            "status": "in_stock",
+                            "order": 6
+                        },
+                        {
+                            "slug": "degustacionnyy-set-iz-semi-vidov-dagestanskogo-hinkala-s-tremya-sousami-i-sushenym-myasom-po-receptu-babushki-shef-povara-kopiya",
                             "title": "Дегустационный сет из семи видов дагестанского хинкала с тремя соусами и сушёным мясом по рецепту бабушки шеф-повара (копия)",
                             "weight": "",
                             "price": 999,

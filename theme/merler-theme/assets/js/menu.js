@@ -107,6 +107,86 @@
 	window.addEventListener( 'resize', updateSpy, { passive: true } );
 	updateSpy();
 
+	/* ── Развёрнутая и свёрнутая лента ─────────────── */
+
+	var navbar = doc.querySelector( '.navbar' );
+	var chipsToggle = doc.querySelector( '.js-chips-toggle' );
+
+	/**
+	 * Свернуть список разделов в одну строку.
+	 *
+	 * Развёрнутая панель висит поверх содержимого, поэтому страница
+	 * не сдвигается и подправлять прокрутку не нужно.
+	 */
+	function collapseChips() {
+		if ( ! navbar || ! navbar.classList.contains( 'is-expanded' ) ) {
+			return;
+		}
+
+		navbar.classList.remove( 'is-expanded' );
+
+		if ( chipsToggle ) {
+			chipsToggle.setAttribute( 'aria-expanded', 'false' );
+			chipsToggle.setAttribute( 'aria-label', 'Показать все разделы' );
+		}
+
+		var active = doc.querySelector( '.chip.is-active' );
+		if ( active ) {
+			setActive( active.getAttribute( 'href' ).slice( 1 ) );
+		}
+	}
+
+	var expandedAt = 0;
+
+	function expandChips() {
+		if ( ! navbar ) {
+			return;
+		}
+		expandedAt = Date.now();
+		navbar.classList.add( 'is-expanded' );
+		if ( chipsToggle ) {
+			chipsToggle.setAttribute( 'aria-expanded', 'true' );
+			chipsToggle.setAttribute( 'aria-label', 'Свернуть список разделов' );
+		}
+	}
+
+	if ( chipsToggle ) {
+		chipsToggle.addEventListener( 'click', function () {
+			if ( navbar.classList.contains( 'is-expanded' ) ) {
+				collapseChips();
+			} else {
+				expandChips();
+			}
+		} );
+	}
+
+	// Гость начал читать меню — панель уходит и освобождает экран.
+	var lastScrollY = window.scrollY;
+
+	window.addEventListener( 'scroll', function () {
+		var justOpened = Date.now() - expandedAt < 400;
+
+		if ( navbar && navbar.classList.contains( 'is-expanded' ) && ! justOpened
+			&& Math.abs( window.scrollY - lastScrollY ) > 24 ) {
+			collapseChips();
+		}
+
+		lastScrollY = window.scrollY;
+	}, { passive: true } );
+
+	// Клик мимо панели и Esc тоже закрывают её.
+	doc.addEventListener( 'click', function ( e ) {
+		if ( navbar && navbar.classList.contains( 'is-expanded' ) && ! e.target.closest( '.navbar' ) ) {
+			collapseChips();
+		}
+	} );
+
+	doc.addEventListener( 'keydown', function ( e ) {
+		if ( 'Escape' === e.key ) {
+			collapseChips();
+		}
+	} );
+
 	/*
 	 * При нажатии на категорию держим подсветку на ней, пока страница едет:
 	 * иначе по дороге мигают промежуточные разделы.
@@ -117,6 +197,7 @@
 		chip.addEventListener( 'click', function () {
 			var href = chip.getAttribute( 'href' ) || '';
 			spyLockedUntil = Date.now() + ( hasScrollEnd ? 6000 : 1600 );
+			collapseChips();
 			setActive( href.slice( 1 ) );
 		} );
 	} );
