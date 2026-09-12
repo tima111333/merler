@@ -25,6 +25,12 @@ if ( in_array( $merler_dish['status'], array( 'soon', 'out_of_stock' ), true ) &
 
 $merler_list_mode = (bool) merler_theme_option( 'no_photo_mode' );
 
+// В поиск добавляем название раздела: гость ищет «хинкал», а блюдо называется «Тонкий».
+$merler_search = mb_strtolower(
+	$merler_dish['title'] . ' ' . $merler_dish['description']
+	. ( isset( $args['search_extra'] ) ? ' ' . $args['search_extra'] : '' )
+);
+
 $merler_photo = '';
 if ( $merler_has_photo ) {
 	$merler_photo = wp_get_attachment_image(
@@ -50,7 +56,7 @@ $merler_full_photo = $merler_has_photo ? wp_get_attachment_image_url( $merler_di
 	data-price="<?php echo esc_attr( $merler_price ); ?>"
 	data-desc="<?php echo esc_attr( $merler_dish['description'] ); ?>"
 	data-photo="<?php echo esc_url( $merler_full_photo ); ?>"
-	data-search="<?php echo esc_attr( mb_strtolower( $merler_dish['title'] . ' ' . $merler_dish['description'] ) ); ?>"
+	data-search="<?php echo esc_attr( $merler_search ); ?>"
 	tabindex="0" role="button"
 	aria-label="<?php echo esc_attr( $merler_dish['title'] . ', ' . $merler_price ); ?>">
 
@@ -95,7 +101,7 @@ $merler_full_photo = $merler_has_photo ? wp_get_attachment_image_url( $merler_di
 	</div>
 </article>
 <?php else : ?>
-<div class="row" data-search="<?php echo esc_attr( mb_strtolower( $merler_dish['title'] . ' ' . $merler_dish['description'] ) ); ?>">
+<div class="row" data-search="<?php echo esc_attr( $merler_search ); ?>">
 	<span class="row-name"><?php echo esc_html( $merler_dish['title'] ); ?></span>
 	<span class="row-dots" aria-hidden="true"></span>
 	<?php if ( '' !== $merler_dish['weight'] ) : ?>

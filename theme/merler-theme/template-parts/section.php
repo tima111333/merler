@@ -28,12 +28,30 @@ if ( ! $merler_section ) {
 	<?php if ( ! empty( $merler_section['dishes'] ) ) : ?>
 		<div class="grid">
 			<?php foreach ( $merler_section['dishes'] as $merler_dish ) : ?>
-				<?php get_template_part( 'template-parts/dish-card', null, array( 'dish' => $merler_dish ) ); ?>
+				<?php
+				get_template_part(
+					'template-parts/dish-card',
+					null,
+					array(
+						'dish'         => $merler_dish,
+						'search_extra' => $merler_section['name'],
+					)
+				);
+				?>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
 
 	<?php foreach ( $merler_section['children'] as $merler_sub ) : ?>
-		<?php get_template_part( 'template-parts/subsection', null, array( 'subsection' => $merler_sub ) ); ?>
+		<?php
+		get_template_part(
+			'template-parts/subsection',
+			null,
+			array(
+				'subsection'  => $merler_sub,
+				'parent_name' => $merler_section['name'],
+			)
+		);
+		?>
 	<?php endforeach; ?>
 </section>

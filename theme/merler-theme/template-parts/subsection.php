@@ -7,7 +7,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$merler_sub = isset( $args['subsection'] ) ? $args['subsection'] : null;
+$merler_sub    = isset( $args['subsection'] ) ? $args['subsection'] : null;
+$merler_parent = isset( $args['parent_name'] ) ? $args['parent_name'] : '';
 
 if ( ! $merler_sub || empty( $merler_sub['dishes'] ) ) {
 	return;
@@ -23,7 +24,16 @@ if ( ! $merler_sub || empty( $merler_sub['dishes'] ) ) {
 
 	<div class="grid">
 		<?php foreach ( $merler_sub['dishes'] as $merler_dish ) : ?>
-			<?php get_template_part( 'template-parts/dish-card', null, array( 'dish' => $merler_dish ) ); ?>
+			<?php
+			get_template_part(
+				'template-parts/dish-card',
+				null,
+				array(
+					'dish'         => $merler_dish,
+					'search_extra' => trim( $merler_sub['name'] . ' ' . $merler_parent ),
+				)
+			);
+			?>
 		<?php endforeach; ?>
 	</div>
 </div>
